@@ -6,8 +6,21 @@ export function completarCuadros(pokeData) {
     });
 }
 
+class Pokemon {
+
+  constructor(objeto) {
+    this.nombre=objeto.species.name;
+    this.altura=objeto.height;
+    this.peso=objeto.weight;
+    this.types=objeto.types;
+    this.firstImage=objeto.sprites.other.dream_world.front_default;
+    this.secondImage=objeto.sprites.front_default;
+  }
+}
 
 export function asignarPropiedadesPokes(objeto) {
+    const poke=new Pokemon(objeto);
+
     const tipoPoke = [];
     const $nombre = document.querySelector('.card-title');
     const $altura = document.querySelector('.altura');
@@ -15,21 +28,21 @@ export function asignarPropiedadesPokes(objeto) {
     const $tipo = document.querySelector('.tipo');
     const $imagen = document.querySelector('.card img');
   
-    if (objeto.sprites.other.dream_world.front_default !== null) {
+    if (poke.firstImage !== null) {
       $imagen.removeAttribute('style');
-      $imagen.setAttribute('src', `${objeto.sprites.other.dream_world.front_default}`);
-    } else if (objeto.sprites.front_default !== null) {
+      $imagen.setAttribute('src', `${poke.firstImage}`);
+    } else if (poke.secondImage !== null) {
       $imagen.removeAttribute('style');
-      $imagen.setAttribute('src', `${objeto.sprites.front_default}`);
+      $imagen.setAttribute('src', `${poke.secondImage}`);
     } else {
       $imagen.setAttribute('src', './poke-default.png');
       $imagen.setAttribute('style', 'opacity:0.5');
     }
   
-    $nombre.textContent = `${(objeto.species.name)}`;
-    $altura.textContent = `${`${objeto.height}mm`}`;
-    $peso.textContent = `${`${objeto.weight / 10}kg`}`;
-    objeto.types.forEach((el) => {
+    $nombre.textContent = `${(poke.nombre)}`;
+    $altura.textContent = `${`${poke.altura}mm`}`;
+    $peso.textContent = `${`${poke.peso / 10}kg`}`;
+    poke.types.forEach((el) => {
       tipoPoke.push(el.type.name);
     });
     $tipo.textContent = `${tipoPoke}`;
