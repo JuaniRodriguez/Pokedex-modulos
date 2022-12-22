@@ -2,6 +2,7 @@ const $cuadros = document.querySelectorAll('.col');
 import crearPaginador from "./modules/ui/paginador.js";
 import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
 import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
+import { completarCuadros } from "./modules/ui/pokeprops.js";
 
 function pokedex() {
 
@@ -13,7 +14,9 @@ function pokedex() {
     elemento.onclick = function clickPaginado() {
       desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
       elemento.classList.add('active');
-      mostrarPokes(elemento.getAttribute('link'));
+      let infoPokes=mostrarPokes(elemento.getAttribute('link'));
+      completarCuadros(infoPokes)
+      
     };
   });
 
@@ -33,3 +36,5 @@ export default function iniciarPokedex() {
   pokedex();
 
 }
+
+

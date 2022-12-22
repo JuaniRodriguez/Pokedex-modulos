@@ -5,7 +5,7 @@ export function removerTexto(elementos) {
     });
 }
 
-export  function desmarcarPaginaActiva(elementos) {
+export function desmarcarPaginaActiva(elementos) {
     elementos.forEach((elemento) => {
       elemento.classList.remove('active');
     });
