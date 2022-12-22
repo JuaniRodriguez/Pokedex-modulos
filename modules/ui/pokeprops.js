@@ -47,3 +47,4 @@ export function asignarPropiedadesPokes(objeto) {
     });
     $tipo.textContent = `${tipoPoke}`;
   }
+
