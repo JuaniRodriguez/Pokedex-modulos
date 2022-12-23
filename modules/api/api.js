@@ -1,4 +1,3 @@
-import { removerTexto } from "../ui/complementos.js";
 import { completarCuadros,asignarPropiedadesPokes } from "../ui/pokeprops.js";
 
 async function llamarListaPokes(pagina) {
@@ -8,8 +7,6 @@ async function llamarListaPokes(pagina) {
 }
 
 export async function mostrarPokes(linkPokes)  {
-    const $cuadros = document.querySelectorAll('.col');
-    removerTexto($cuadros);
     let infoPokes = await llamarListaPokes(linkPokes);
     return infoPokes;
 };
@@ -18,6 +15,7 @@ export async function mostrarPokes(linkPokes)  {
 export async function llamarPropiedadPoke(url) {
   const response = await fetch(`${url}`);
   const resultado = await response.json();
+  console.log(resultado)
   return resultado;
 }
 

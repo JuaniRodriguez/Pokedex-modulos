@@ -10,8 +10,6 @@ import { guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "./modules/l
 function pokedex() {
 
   crearPaginador();
-  
-  //document.querySelectorAll(".page-item")[0].classList.add('active');
 
   document.querySelectorAll(".page-item").forEach((elemento) => {
     elemento.onclick = async function clickPaginado() {
@@ -23,7 +21,7 @@ function pokedex() {
         completarCuadros(pokemones);
       } catch(e) {
       let infoPokes= await mostrarPokes(elemento.getAttribute('link'));
-      completarCuadros(infoPokes)
+      completarCuadros(infoPokes);
       guardarListaPokesEnLocalStorage(elemento.getAttribute('link'),infoPokes);
       }
       
