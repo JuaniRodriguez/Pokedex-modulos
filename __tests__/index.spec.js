@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-
 import iniciarPokedex from "../pokedex.js"
 import '../index.js';
 
