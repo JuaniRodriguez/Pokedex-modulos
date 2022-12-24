@@ -15,7 +15,6 @@ export async function mostrarPokes(linkPokes)  {
 export async function llamarPropiedadPoke(url) {
   const response = await fetch(`${url}`);
   const resultado = await response.json();
-  console.log(resultado)
   return resultado;
 }
 

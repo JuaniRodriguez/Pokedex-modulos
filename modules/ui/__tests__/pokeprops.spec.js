@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import pokedexFixture from "../../../__tests__/pokedex.fixture.js";
+import pokedexFixture from './Fixture/pokedex.fixture.js';
 import { asignarPropiedadesPokes, completarCuadros } from "../pokeprops.js";
 import bulbasaur from "./Fixture/bulbasaur.json"
 import stunfisk from "./Fixture/stunfisk.json";

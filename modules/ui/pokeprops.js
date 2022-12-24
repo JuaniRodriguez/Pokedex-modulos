@@ -1,7 +1,8 @@
+import { removerTexto } from "./complementos.js";
 
 export function completarCuadros(pokeData) {
     const $cuadros = document.querySelectorAll('.col');
-    //removerTexto($cuadros);
+    removerTexto($cuadros);
     pokeData.forEach((el, i) => {
       $cuadros[i].textContent = `${pokeData[i].name}`;
       $cuadros[i].setAttribute('link', `${pokeData[i].url}`);

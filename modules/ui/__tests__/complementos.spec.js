@@ -2,10 +2,24 @@
  * @jest-environment jsdom
  */
 
-import {desmarcarPaginaActiva} from '../complementos.js';
-import pokedexFixture from '../../../__tests__/pokedex.fixture.js';
+import {removerTexto,desmarcarPaginaActiva} from '../complementos.js';
+import pokedexFixture from './Fixture/pokedex.fixture.js';
 import crearPaginador from '../paginador.js';
 
+test("testea que se eliminen textos y link",()=> {
+    document.body.innerHTML=`
+        <div>
+            <div class="col" link>Texto</div>
+            <div class="col" link>Texto2</div>
+        </div>
+    `;
+    removerTexto(document.querySelectorAll(".col"));
+        expect(document.querySelectorAll(".col")[0].textContent).toBe('');
+        expect(document.querySelectorAll(".col")[0].getAttribute("link")).toBeNull();
+        expect(document.querySelectorAll(".col")[1].textContent).toBe('');
+        expect(document.querySelectorAll(".col")[1].getAttribute("link")).toBeNull();
+
+})
 
 test("que se desmarquen paginas",()=> {
     document.body.innerHTML=pokedexFixture;

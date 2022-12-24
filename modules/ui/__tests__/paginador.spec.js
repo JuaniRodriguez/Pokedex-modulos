@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import pokedexFixture from '../../../__tests__/pokedex.fixture.js';
+import pokedexFixture from './Fixture/pokedex.fixture.js';
 import crearPaginador from '../paginador.js';
 
 test("testea creacion de paginador", ()=> {
