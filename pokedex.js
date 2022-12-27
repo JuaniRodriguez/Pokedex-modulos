@@ -49,10 +49,10 @@ function pokedex() {
 }
 
 export default function iniciarPokedex() {
-
-  pokedex();
-  document.querySelectorAll(".page-item")[0].click();
-  document.querySelectorAll(".page-item")[0].classList.add('active');
+  
+    return pokedex()
+  //document.querySelectorAll(".page-item")[0].click();
+  //document.querySelectorAll(".page-item")[0].classList.add('active');
 
 }
 
