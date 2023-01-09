@@ -1,1 +1,3 @@
-Pokedex realizada utilizando HTML,CSS,JAVASCRIPT y RESTful API https://pokeapi.co/. Testeada con Cypress y Jest.
+POKEDEX with API https://pokeapi.co/ using JAVASCRIPT and REACT. Tested with Cypress and Jest.
+
+DEPLOY:https://juanirodriguez.github.io/Pokedex-modulos/
