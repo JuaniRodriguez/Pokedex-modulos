@@ -1,6 +1,13 @@
 
-export default async function fetchPokes(pagina) {
+/*export default async function fetchPokes(pagina) {
   const response = await fetch(`${pagina}`);
+  //const resultado = await response.json();
+  //console.log(resultado)
+  return response.json();
+}*/
+
+export default async function fetchPokes(offset) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`);
   //const resultado = await response.json();
   //console.log(resultado)
   return response.json();
@@ -34,6 +41,6 @@ Por ahora:
 - la llame en en api dentro de llamarListaPokes, porque si nunca estuvo guardada(tengo que chequearlo ahi) la guardo.
 */
 
-let cadena="https://pokeapi.co/api/v2/pokemon/152/";
-let cadena2=cadena.slice(34).slice(0,-1)
-console.log(cadena2)
+//let cadena="https://pokeapi.co/api/v2/pokemon/152/";
+//let cadena2=cadena.slice(34).slice(0,-1)
+//console.log(cadena2)

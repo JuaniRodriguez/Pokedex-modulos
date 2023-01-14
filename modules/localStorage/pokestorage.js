@@ -1,16 +1,15 @@
-export function guardarListaPokesEnLocalStorage(link,pokesData) {
+export function guardarListaPokesEnLocalStorage(offset,pokesData) {
     
-    localStorage.setItem(link,JSON.stringify(pokesData))
+    localStorage.setItem(offset,JSON.stringify(pokesData))
 
 }
 
-export function obtenerListaPokesDeLocalStorage(link) {
+export function obtenerListaPokesDeLocalStorage(offset) {
     
-    const pokemones=localStorage.getItem(`${link}`);
+    const pokemones=localStorage.getItem(`${offset}`);
     if(pokemones===null) {
         throw new Error("no se encontro el listado de pokemones")
     }
-   // localStorage.clear()
 
     return JSON.parse(pokemones)
 }
@@ -25,7 +24,6 @@ export function obtenerPokeDeLocalStorage(link) {
     if(pokemon===null) {
         throw new Error("no se encontro el poke")
     }
-    //localStorage.clear()
 
     return JSON.parse(pokemon)
 }

@@ -2,13 +2,13 @@
 import fetchPokes from "../api/api.js";
 import { guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage,guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "../localStorage/pokestorage.js";
 
-export async function llamarListadoPokes(link) {
+export async function llamarListadoPokes(offset) {
     try {
         console.log("local");
-        return obtenerListaPokesDeLocalStorage(link);
+        return obtenerListaPokesDeLocalStorage(offset);
     } catch(e) {
-        const fetchPokemones= await fetchPokes(link);
-        guardarListaPokesEnLocalStorage(link,fetchPokemones.results);
+        const fetchPokemones= await fetchPokes(offset);
+        guardarListaPokesEnLocalStorage(offset,fetchPokemones.results);
         return fetchPokemones.results;
     }
 }

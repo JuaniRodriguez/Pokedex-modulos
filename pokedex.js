@@ -17,7 +17,9 @@ function pokedex() {
     elemento.onclick = async function clickPaginado() {
       desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
       elemento.classList.add('active');
-      let prueba= await llamarListadoPokes(elemento.getAttribute('link'));
+      let prueba= await llamarListadoPokes(elemento.getAttribute('offset'));
+      console.log(elemento.getAttribute("offset"))
+      
       //listarPokes(llamarListadoPokes(elemento.getAttribute('link')),document.querySelectorAll(".col"));
       listarPokes(prueba,document.querySelectorAll(".col"));
    

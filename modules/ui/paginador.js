@@ -7,7 +7,8 @@ export default function crearPaginador() {
         const offset=(i * 20);
         const li=document.createElement("li");
         li.setAttribute("class","page-item");
-        li.setAttribute('link', `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`);
+        li.setAttribute("offset",`${offset}`)
+        //li.setAttribute('link', `https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`);
         const a=document.createElement("a");
         a.setAttribute("class","page-link");
         a.textContent=`${i+1}`;

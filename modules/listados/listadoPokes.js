@@ -4,8 +4,11 @@ import Pokemon from "../entidades/pokemon.js";
 export function listarPokes(pokes,cuadros) {
     pokes.forEach((poke, i) => {
         const {name,url}=poke;
+        const pokeId=poke.url.slice(34).slice(0,-1);
+        console.log(pokeId)
         cuadros[i].textContent = `${poke.name}`;
-        cuadros[i].setAttribute('link', `${poke.url}`);
+        //cuadros[i].setAttribute('link', `${poke.url}`);
+        cuadros[i].setAttribute("pokeId",`${pokeId}`)
     });
 }
 
