@@ -15,12 +15,12 @@ export function obtenerListaPokesDeLocalStorage(offset) {
 }
 
 
-export function guardarPokeEnLocalStorage(link,pokeData) {
-    localStorage.setItem(link,JSON.stringify(pokeData))
+export function guardarPokeEnLocalStorage(id,pokeData) {
+    localStorage.setItem(id,JSON.stringify(pokeData))
 }
 
-export function obtenerPokeDeLocalStorage(link) {
-    const pokemon=localStorage.getItem(`${link}`);
+export function obtenerPokeDeLocalStorage(id) {
+    const pokemon=localStorage.getItem(`${id}`);
     if(pokemon===null) {
         throw new Error("no se encontro el poke")
     }

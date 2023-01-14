@@ -2,7 +2,7 @@ const $cuadros = document.querySelectorAll('.col');
 import crearPaginador from "./modules/ui/paginador.js";
 import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
 //import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
-import llamarListaPokes from "./modules/api/api.js";
+//import llamarListaPokes from "./modules/api/api.js";
 import { llamarListadoPokes,llamarPropiedadesPoke } from "./modules/servicios/servicios.js";
 import { listarPokes } from "./modules/listados/listadoPokes.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
@@ -29,10 +29,10 @@ function pokedex() {
 
   $cuadros.forEach((cuadro) => {
     cuadro.onclick = async function clickCuadro() {
-    let  link = cuadro.getAttribute('link');
-      if (link !== null) {
+    let id = cuadro.getAttribute('poke-id');
+      if (id !== null) {
     
-        let pruebados=await llamarPropiedadesPoke(link);
+        let pruebados=await llamarPropiedadesPoke(id);
         asignarPropiedadesPokes(pruebados);
 
       }

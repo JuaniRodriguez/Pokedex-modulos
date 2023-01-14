@@ -5,12 +5,19 @@
   //console.log(resultado)
   return response.json();
 }*/
+const url="https://pokeapi.co/api/v2/pokemon/"
 
-export default async function fetchPokes(offset) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=20&offset=${offset}`);
+export async function fetchPokes(offset) {
+  const response = await fetch(`${url}?limit=20&offset=${offset}`);
   //const resultado = await response.json();
   //console.log(resultado)
   return response.json();
+}
+
+export async function fetchPoke(id) {
+  const response = await fetch(`${url}${id}`);
+  return response.json();
+
 }
 
 //const linkBase='https://pokeapi.co/api/v2/pokemon/';

@@ -8,7 +8,7 @@ export function listarPokes(pokes,cuadros) {
         console.log(pokeId)
         cuadros[i].textContent = `${poke.name}`;
         //cuadros[i].setAttribute('link', `${poke.url}`);
-        cuadros[i].setAttribute("pokeId",`${pokeId}`)
+        cuadros[i].setAttribute("poke-id",`${pokeId}`)
     });
 }
 

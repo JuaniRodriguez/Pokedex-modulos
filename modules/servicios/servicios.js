@@ -1,5 +1,5 @@
 //de pokedex.js, deberia sacar el try catch de local storage, y hacerlo aca.
-import fetchPokes from "../api/api.js";
+import {fetchPokes,fetchPoke} from "../api/api.js";
 import { guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage,guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "../localStorage/pokestorage.js";
 
 export async function llamarListadoPokes(offset) {
@@ -13,15 +13,15 @@ export async function llamarListadoPokes(offset) {
     }
 }
 
-export async function llamarPropiedadesPoke(link) {
-    if(link===null) {
-        throw new Error("se requiere un link para cargar")
+export async function llamarPropiedadesPoke(id) {
+    if(id===null) {
+        throw new Error("se requiere un id para cargar")
     }
     try {
-        return obtenerPokeDeLocalStorage(link);
+        return obtenerPokeDeLocalStorage(id);
     } catch(e) {
-        const fetchProps=await fetchPokes(link);
-        guardarPokeEnLocalStorage(link,fetchProps);
+        const fetchProps=await fetchPoke(id);
+        guardarPokeEnLocalStorage(id,fetchProps);
         return fetchProps;
     }
     
