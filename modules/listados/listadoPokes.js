@@ -10,6 +10,8 @@ export function listarPokes(pokes,cuadros) {
 }
 
 export function propiedadesPoke(infoPoke) {
+    
+    //const {name,height,weight,types,sprites}=infoPoke;
 
     const pokemon= new Pokemon (
         infoPoke.name,
@@ -21,7 +23,6 @@ export function propiedadesPoke(infoPoke) {
         infoPoke.sprites.other.dream_world.front_default,
         infoPoke.sprites.front_default,
     )
-
     return pokemon
 }
 // usare la class Pokemon para completar la info del poke

@@ -3,6 +3,7 @@ import crearPaginador from "./modules/ui/paginador.js";
 import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
 //import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
 import llamarListaPokes from "./modules/api/api.js";
+import { llamarListadoPokes,llamarPropiedadesPoke } from "./modules/servicios/servicios.js";
 import { listarPokes } from "./modules/listados/listadoPokes.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
 import { asignarPropiedadesPokes } from "./modules/ui/paginador.js";
@@ -16,15 +17,19 @@ function pokedex() {
     elemento.onclick = async function clickPaginado() {
       desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
       elemento.classList.add('active');
-      let pokemones;
-      try {
-        pokemones=obtenerListaPokesDeLocalStorage(elemento.getAttribute('link'))
-        listarPokes(pokemones,document.querySelectorAll(".col"));
-      } catch(e) {
-      let infoPokes= await llamarListaPokes(elemento.getAttribute('link'));
-      listarPokes(infoPokes,document.querySelectorAll(".col"));
-      guardarListaPokesEnLocalStorage(elemento.getAttribute('link'),infoPokes);
-      }
+      let prueba= await llamarListadoPokes(elemento.getAttribute('link'));
+      //listarPokes(llamarListadoPokes(elemento.getAttribute('link')),document.querySelectorAll(".col"));
+      listarPokes(prueba,document.querySelectorAll(".col"));
+      
+      //let pokemones;
+      //try {
+      //  pokemones=obtenerListaPokesDeLocalStorage(elemento.getAttribute('link'))
+      //  listarPokes(pokemones,document.querySelectorAll(".col"));
+      //} catch(e) {
+      //let infoPokes= await llamarListaPokes(elemento.getAttribute('link'));
+      //listarPokes(infoPokes,document.querySelectorAll(".col"));
+      //guardarListaPokesEnLocalStorage(elemento.getAttribute('link'),infoPokes);
+      //}
       
     };
   });
@@ -33,17 +38,20 @@ function pokedex() {
     cuadro.onclick = async function clickCuadro() {
     let  link = cuadro.getAttribute('link');
       if (link !== null) {
-        let pokemon;
-        try {
-          pokemon=obtenerPokeDeLocalStorage(link);
-          asignarPropiedadesPokes(pokemon)
-        } catch(e) {
-          let infoPoke=await llamarListaPokes(link);
-          asignarPropiedadesPokes(infoPoke);
-          guardarPokeEnLocalStorage(link,infoPoke);
-        }
+        //let pokemon;
+        //try {
+        //  pokemon=obtenerPokeDeLocalStorage(link);
+        //  asignarPropiedadesPokes(pokemon)
+        //} catch(e) {
+        //  let infoPoke=await llamarListaPokes(link);
+        //  asignarPropiedadesPokes(infoPoke);
+        //  guardarPokeEnLocalStorage(link,infoPoke);
+        //}
+        let pruebados=await llamarPropiedadesPoke(link);
+        asignarPropiedadesPokes(pruebados);
 
       }
+
     };
   });
 

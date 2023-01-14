@@ -1,9 +1,16 @@
 
-export default async function llamarListaPokes(pagina) {
+export default async function fetchPokes(pagina) {
   const response = await fetch(`${pagina}`);
-  const resultado = await response.json();
-  return resultado.results;
+  //const resultado = await response.json();
+  //console.log(resultado)
+  return response.json();
 }
+
+
+//let probando=await fetchPokes("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20");
+//console.log(probando.results)
+
+//fetchPokes("https://pokeapi.co/api/v2/pokemon/1/")
 
 //export async function mostrarPokes(linkPokes)  {
 //    let infoPokes = await llamarListaPokes(linkPokes);

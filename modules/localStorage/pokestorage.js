@@ -1,13 +1,16 @@
 export function guardarListaPokesEnLocalStorage(link,pokesData) {
+    
     localStorage.setItem(link,JSON.stringify(pokesData))
 
 }
 
 export function obtenerListaPokesDeLocalStorage(link) {
+    
     const pokemones=localStorage.getItem(`${link}`);
     if(pokemones===null) {
         throw new Error("no se encontro el listado de pokemones")
     }
+   // localStorage.clear()
 
     return JSON.parse(pokemones)
 }
@@ -22,6 +25,7 @@ export function obtenerPokeDeLocalStorage(link) {
     if(pokemon===null) {
         throw new Error("no se encontro el poke")
     }
+    //localStorage.clear()
 
     return JSON.parse(pokemon)
 }

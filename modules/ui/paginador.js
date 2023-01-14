@@ -29,10 +29,10 @@ export function asignarPropiedadesPokes(dataPoke) {
     const $tipo = document.querySelector('.tipo');
     const $imagen = document.querySelector('.card img');
   
-    if (poke.firstImage !== null) {
+    if (poke.primerImagen !== null) {
       $imagen.removeAttribute('style');
       $imagen.setAttribute('src', `${poke.primerImagen}`);
-    } else if (poke.secondImage !== null) {
+    } else if (poke.segundaImagen !== null) {
       $imagen.removeAttribute('style');
       $imagen.setAttribute('src', `${poke.segundaImagen}`);
     } else {
