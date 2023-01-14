@@ -6,6 +6,9 @@ export default async function fetchPokes(pagina) {
   return response.json();
 }
 
+//const linkBase='https://pokeapi.co/api/v2/pokemon/';
+//
+//export async function fetchPoke(offset)
 
 //let probando=await fetchPokes("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=20");
 //console.log(probando.results)
@@ -30,3 +33,7 @@ Por ahora:
 - cree la funcion guardarPokemon en localStorage
 - la llame en en api dentro de llamarListaPokes, porque si nunca estuvo guardada(tengo que chequearlo ahi) la guardo.
 */
+
+let cadena="https://pokeapi.co/api/v2/pokemon/152/";
+let cadena2=cadena.slice(34).slice(0,-1)
+console.log(cadena2)
