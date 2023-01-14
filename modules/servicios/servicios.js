@@ -1,4 +1,3 @@
-//de pokedex.js, deberia sacar el try catch de local storage, y hacerlo aca.
 import {fetchPokes,fetchPoke} from "../api/api.js";
 import { guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage,guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "../localStorage/pokestorage.js";
 
@@ -27,4 +26,3 @@ export async function llamarPropiedadesPoke(id) {
     
 }
 
-//esta pasando que al hacer un solo fetch, yo devuelvo resultado.results, pero eso me sirve para el listado de pokes, para cada poke en particular al hacer el fetch no uso .results

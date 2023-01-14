@@ -6,34 +6,39 @@ import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
 import { llamarListadoPokes,llamarPropiedadesPoke } from "./modules/servicios/servicios.js";
 import { listarPokes } from "./modules/listados/listadoPokes.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
-import { asignarPropiedadesPokes } from "./modules/ui/paginador.js";
+import { asignarPropiedadesPokes } from "./modules/ui/pokeprops.js";
 import { guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "./modules/localStorage/pokestorage.js";
+
+function iniciarConPaginador() {
+  crearPaginador();
+
+}
 
 function pokedex() {
 
-  crearPaginador();
 
   document.querySelectorAll(".page-item").forEach((elemento) => {
     elemento.onclick = async function clickPaginado() {
       desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
       elemento.classList.add('active');
-      let prueba= await llamarListadoPokes(elemento.getAttribute('offset'));
+      let lista= await llamarListadoPokes(elemento.getAttribute('offset'));
       console.log(elemento.getAttribute("offset"))
       
       //listarPokes(llamarListadoPokes(elemento.getAttribute('link')),document.querySelectorAll(".col"));
-      listarPokes(prueba,document.querySelectorAll(".col"));
-   
+      listarPokes(lista,document.querySelectorAll(".col"));
+      
       
     };
   });
+
 
   $cuadros.forEach((cuadro) => {
     cuadro.onclick = async function clickCuadro() {
     let id = cuadro.getAttribute('poke-id');
       if (id !== null) {
     
-        let pruebados=await llamarPropiedadesPoke(id);
-        asignarPropiedadesPokes(pruebados);
+        let props=await llamarPropiedadesPoke(id);
+        asignarPropiedadesPokes(props);
 
       }
 
@@ -42,12 +47,15 @@ function pokedex() {
 
 }
 
+/*
 export default function iniciarPokedex() {
   
     return pokedex()
   //document.querySelectorAll(".page-item")[0].click();
   //document.querySelectorAll(".page-item")[0].classList.add('active');
 
-}
+}*/
+export {iniciarConPaginador,pokedex}
 
 
+//a mostrarListado le pasa como segundo parametro una funcion con lo que quiero que se ejecute cuando pasa algo. En este caso, lo usa para mostrar un pokemon cuando se hace click. Pero mostrarListado es importada, entonces voy a donde se arma la misma, y en segundo parametro paso una callback vacia que va hacia el click. Basicamente, yo lo que hago siempre es decidir en otra pagina que hace la funcion que importo aca en pokedex. Pero aca no, aca defino en pokedex que quiero que haga tal funcion. Entonces donde se arma la funcion, pongo que al click se ejecute el callback, y el callback lo armo aca. 
