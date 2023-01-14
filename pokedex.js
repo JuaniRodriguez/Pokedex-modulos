@@ -1,10 +1,11 @@
 const $cuadros = document.querySelectorAll('.col');
 import crearPaginador from "./modules/ui/paginador.js";
 import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
-import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
-import { completarCuadros } from "./modules/ui/pokeprops.js";
+//import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
+import llamarListaPokes from "./modules/api/api.js";
+import { listarPokes } from "./modules/listados/listadoPokes.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
-import { asignarPropiedadesPokes } from "./modules/ui/pokeprops.js";
+import { asignarPropiedadesPokes } from "./modules/ui/paginador.js";
 import { guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "./modules/localStorage/pokestorage.js";
 
 function pokedex() {
@@ -18,10 +19,10 @@ function pokedex() {
       let pokemones;
       try {
         pokemones=obtenerListaPokesDeLocalStorage(elemento.getAttribute('link'))
-        completarCuadros(pokemones);
+        listarPokes(pokemones,document.querySelectorAll(".col"));
       } catch(e) {
-      let infoPokes= await mostrarPokes(elemento.getAttribute('link'));
-      completarCuadros(infoPokes);
+      let infoPokes= await llamarListaPokes(elemento.getAttribute('link'));
+      listarPokes(infoPokes,document.querySelectorAll(".col"));
       guardarListaPokesEnLocalStorage(elemento.getAttribute('link'),infoPokes);
       }
       
@@ -37,7 +38,7 @@ function pokedex() {
           pokemon=obtenerPokeDeLocalStorage(link);
           asignarPropiedadesPokes(pokemon)
         } catch(e) {
-          let infoPoke=await llamarPropiedadPoke(link);
+          let infoPoke=await llamarListaPokes(link);
           asignarPropiedadesPokes(infoPoke);
           guardarPokeEnLocalStorage(link,infoPoke);
         }

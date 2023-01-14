@@ -20,7 +20,7 @@ export function guardarPokeEnLocalStorage(link,pokeData) {
 export function obtenerPokeDeLocalStorage(link) {
     const pokemon=localStorage.getItem(`${link}`);
     if(pokemon===null) {
-        throw new Error("no se encontro el listado de pokemones")
+        throw new Error("no se encontro el poke")
     }
 
     return JSON.parse(pokemon)

@@ -1,25 +1,31 @@
-import { removerTexto } from "./complementos.js";
-/*
-export function completarCuadros(pokeData) {
-    const $cuadros = document.querySelectorAll('.col');
-    removerTexto($cuadros);
-    pokeData.forEach((el, i) => {
-      $cuadros[i].textContent = `${pokeData[i].name}`;
-      $cuadros[i].setAttribute('link', `${pokeData[i].url}`);
-    });
-}*/
-/*
-class Pokemon {
+import Pokemon from "../entidades/pokemon.js";
 
-  constructor(objeto) {
-    this.nombre=objeto.species.name;
-    this.altura=objeto.height;
-    this.peso=objeto.weight;
-    this.types=objeto.types;
-    this.firstImage=objeto.sprites.other.dream_world.front_default;
-    this.secondImage=objeto.sprites.front_default;
-  }
-}*/
+//aca asigno los pokes a los cuadros
+export function listarPokes(pokes,cuadros) {
+    pokes.forEach((poke, i) => {
+        const {name,url}=poke;
+        cuadros[i].textContent = `${poke.name}`;
+        cuadros[i].setAttribute('link', `${poke.url}`);
+    });
+}
+
+export function propiedadesPoke(infoPoke) {
+
+    const pokemon= new Pokemon (
+        infoPoke.name,
+        infoPoke.height,
+        infoPoke.weight,
+        infoPoke.types.map((el)=> {
+            return `"${el.type.name}"`
+        }),
+        infoPoke.sprites.other.dream_world.front_default,
+        infoPoke.sprites.front_default,
+    )
+
+    return pokemon
+}
+// usare la class Pokemon para completar la info del poke
+
 /*
 export function asignarPropiedadesPokes(objeto) {
     const poke=new Pokemon(objeto);
@@ -50,5 +56,5 @@ export function asignarPropiedadesPokes(objeto) {
     });
     $tipo.textContent = `${tipoPoke}`;
   }
-
 */
+
