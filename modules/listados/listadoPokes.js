@@ -1,11 +1,13 @@
-import Pokemon from "../entidades/pokemon.js";
+/*import Pokemon from "../entidades/pokemon.js";
 
-export function listarPokes(pokes,cuadros) {
+export function listarPokes(pokes) {
+    const $cuadros=document.querySelectorAll(".col");
     pokes.forEach((poke, i) => {
         const {name,url}=poke;
         const pokeId=poke.url.slice(34).slice(0,-1);
-        cuadros[i].textContent = `${poke.name}`;
-        cuadros[i].setAttribute("poke-id",`${pokeId}`)
+        $cuadros[i].textContent = `${poke.name}`;
+        $cuadros[i].setAttribute("poke-id",`${pokeId}`);
+
     });
 }
 
@@ -23,3 +25,6 @@ export function propiedadesPoke(infoPoke) {
     )
     return pokemon
 }
+
+
+*/

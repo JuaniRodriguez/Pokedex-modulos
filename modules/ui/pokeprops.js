@@ -1,15 +1,17 @@
 import { removerTexto } from "./complementos.js";
-import { propiedadesPoke } from "../listados/listadoPokes.js";
+import { propiedadesPoke } from "../entidades/pokemon.js";
 
-/*
-export function completarCuadros(pokeData) {
-    const $cuadros = document.querySelectorAll('.col');
-    removerTexto($cuadros);
-    pokeData.forEach((el, i) => {
-      $cuadros[i].textContent = `${pokeData[i].name}`;
-      $cuadros[i].setAttribute('link', `${pokeData[i].url}`);
-    });
-}*/
+export function listarPokes(pokes) {
+  const $cuadros=document.querySelectorAll(".col");
+  removerTexto($cuadros);
+  pokes.forEach((poke, i) => {
+      const {name,url}=poke;
+      const pokeId=poke.url.slice(34).slice(0,-1);
+      $cuadros[i].textContent = `${poke.name}`;
+      $cuadros[i].setAttribute("poke-id",`${pokeId}`);
+
+  });
+}
 
 
 export function asignarPropiedadesPokes(dataPoke) {

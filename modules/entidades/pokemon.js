@@ -1,4 +1,4 @@
-export default class Pokemon {
+class Pokemon {
 
     constructor (
         nombre,
@@ -19,3 +19,17 @@ export default class Pokemon {
 
 }
 
+export function propiedadesPoke(infoPoke) {
+
+    const pokemon= new Pokemon (
+        infoPoke.name,
+        infoPoke.height,
+        infoPoke.weight,
+        infoPoke.types.map((el)=> {
+            return `"${el.type.name}"`
+        }),
+        infoPoke.sprites.other.dream_world.front_default,
+        infoPoke.sprites.front_default,
+    )
+    return pokemon
+}

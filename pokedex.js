@@ -1,35 +1,40 @@
 const $cuadros = document.querySelectorAll('.col');
 import crearPaginador from "./modules/ui/paginador.js";
-import {desmarcarPaginaActiva} from "./modules/ui/complementos.js";
+import {desmarcarPaginaActiva,setearActive} from "./modules/ui/complementos.js";
 //import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
 //import llamarListaPokes from "./modules/api/api.js";
 import { llamarListadoPokes,llamarPropiedadesPoke } from "./modules/servicios/servicios.js";
-import { listarPokes } from "./modules/listados/listadoPokes.js";
+import { listarPokes } from "./modules/ui/pokeprops.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
 import { asignarPropiedadesPokes } from "./modules/ui/pokeprops.js";
 import { guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "./modules/localStorage/pokestorage.js";
 
 function iniciarConPaginador() {
-  crearPaginador();
+  crearPaginador(async(offset)=> {
+      desmarcarPaginaActiva();
+      setearActive(offset);
+      const lista=await llamarListadoPokes(offset);
+      listarPokes(lista)
+
+  })
 
 }
 
 function pokedex() {
+  //document.querySelectorAll(".page-item").forEach((elemento) => {
+  //  elemento.onclick = async function clickPaginado() {
+  //    desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
+  //    elemento.classList.add('active');
+  //    let lista= await llamarListadoPokes(elemento.getAttribute('id'));
+  //    console.log(elemento.getAttribute("id"))
+  //    listarPokes(lista,document.querySelectorAll(".col"));
+  //    
+  //    //listarPokes(llamarListadoPokes(elemento.getAttribute('link')),document.     querySelectorAll(".col"));
+  //    
+  //    
+  //  };
+  //});
 
-
-  document.querySelectorAll(".page-item").forEach((elemento) => {
-    elemento.onclick = async function clickPaginado() {
-      desmarcarPaginaActiva(document.querySelectorAll(".page-item"));
-      elemento.classList.add('active');
-      let lista= await llamarListadoPokes(elemento.getAttribute('offset'));
-      console.log(elemento.getAttribute("offset"))
-      
-      //listarPokes(llamarListadoPokes(elemento.getAttribute('link')),document.querySelectorAll(".col"));
-      listarPokes(lista,document.querySelectorAll(".col"));
-      
-      
-    };
-  });
 
 
   $cuadros.forEach((cuadro) => {
