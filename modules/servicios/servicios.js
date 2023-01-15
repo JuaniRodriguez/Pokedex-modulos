@@ -3,7 +3,6 @@ import { guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage,guardar
 
 export async function llamarListadoPokes(offset) {
     try {
-        console.log("local");
         return obtenerListaPokesDeLocalStorage(offset);
     } catch(e) {
         const fetchPokemones= await fetchPokes(offset);

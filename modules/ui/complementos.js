@@ -18,8 +18,4 @@ export function setearActive(pagina) {
     seleccion.classList.add('active');
 
 }
-/*
-document.query
 
-
-console.log(document.getAttribute("offset","0"))*/

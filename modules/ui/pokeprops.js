@@ -6,13 +6,13 @@ export function listarPokes(pokes,cuadroSeleccionado=()=>{}) {
   removerTexto($cuadros);
   pokes.forEach((poke, i) => {
       const {name,url}=poke;
-      const pokeId=poke.url.slice(34).slice(0,-1);
+      //slice para no tener que trabajar con la url completa de cada poke.
+      const pokeId=poke.url.slice(34);
       $cuadros[i].textContent = `${poke.name}`;
       $cuadros[i].setAttribute("poke-id",`${pokeId}`);
       $cuadros[i].onclick=()=>cuadroSeleccionado(pokeId)
   });
 }
-
 
 export function asignarPropiedadesPokes(dataPoke) {
 

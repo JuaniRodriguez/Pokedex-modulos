@@ -15,7 +15,6 @@ export default function crearPaginador(totalPokes,paginaSeleccionada=()=>{}) {
     }
 }
 
-//console.log(document.querySelector("#20"))
 
 
 

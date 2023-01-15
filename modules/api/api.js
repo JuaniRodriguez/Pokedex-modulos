@@ -1,4 +1,4 @@
-const url="https://pokeapi.co/api/v2/pokemon/"
+const url="https://pokeapi.co/api/v2/pokemon/";
 
 export async function fetchPokes(offset) {
   const response = await fetch(`${url}?limit=20&offset=${offset}`);
