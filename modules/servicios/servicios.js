@@ -26,3 +26,7 @@ export async function llamarPropiedadesPoke(id) {
     
 }
 
+export async function totalPokes() {
+    const totalPokes= await fetchPokes(0);
+    return totalPokes.count
+}

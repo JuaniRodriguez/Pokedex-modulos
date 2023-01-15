@@ -3,7 +3,7 @@ import crearPaginador from "./modules/ui/paginador.js";
 import {desmarcarPaginaActiva,setearActive} from "./modules/ui/complementos.js";
 //import {mostrarPokes,llamarPropiedadPoke}  from "./modules/api/api.js";
 //import llamarListaPokes from "./modules/api/api.js";
-import { llamarListadoPokes,llamarPropiedadesPoke } from "./modules/servicios/servicios.js";
+import { llamarListadoPokes,llamarPropiedadesPoke,totalPokes } from "./modules/servicios/servicios.js";
 import { listarPokes } from "./modules/ui/pokeprops.js";
 import {guardarListaPokesEnLocalStorage,obtenerListaPokesDeLocalStorage} from "./modules/localStorage/pokestorage.js";
 import { asignarPropiedadesPokes } from "./modules/ui/pokeprops.js";
@@ -11,12 +11,13 @@ import { guardarPokeEnLocalStorage,obtenerPokeDeLocalStorage } from "./modules/l
 
 
 
-function iniciarConPaginador() {
-  crearPaginador(async(offset)=> {
+async function iniciarConPaginador() {
+
+  
+  crearPaginador(await totalPokes(),async(offset)=> {
     desmarcarPaginaActiva();
     setearActive(offset);
     const lista=await llamarListadoPokes(offset);
-    console.log(lista)
     listarPokes(lista,async(id) => {
       if(id !== null) {
         const props=await llamarPropiedadesPoke(id);

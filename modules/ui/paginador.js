@@ -1,7 +1,7 @@
-export default function crearPaginador(paginaSeleccionada=()=>{}) {
-    
+export default function crearPaginador(totalPokes,paginaSeleccionada=()=>{}) {
+    console.log(totalPokes)
     const $paginador=document.querySelector("#paginador");
-    for(let i=0;i<58;i++) {
+    for(let i=0;i<Math.ceil(totalPokes/20);i++) {
         const offset=(i * 20);
         const li=document.createElement("li");
         li.setAttribute("class","page-item");
