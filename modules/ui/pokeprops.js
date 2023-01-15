@@ -1,7 +1,7 @@
 import { removerTexto } from "./complementos.js";
 import { propiedadesPoke } from "../entidades/pokemon.js";
 
-export function listarPokes(pokes) {
+export function listarPokes(pokes,cuadroSeleccionado=()=>{}) {
   const $cuadros=document.querySelectorAll(".col");
   removerTexto($cuadros);
   pokes.forEach((poke, i) => {
@@ -9,7 +9,7 @@ export function listarPokes(pokes) {
       const pokeId=poke.url.slice(34).slice(0,-1);
       $cuadros[i].textContent = `${poke.name}`;
       $cuadros[i].setAttribute("poke-id",`${pokeId}`);
-
+      $cuadros[i].onclick=()=>cuadroSeleccionado(pokeId)
   });
 }
 

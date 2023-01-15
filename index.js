@@ -1,6 +1,5 @@
 //import iniciarPokedex from "./pokedex.js";
 //iniciarPokedex();
-import { iniciarConPaginador,pokedex } from "./pokedex.js";
+import { iniciarConPaginador} from "./pokedex.js";
 
 iniciarConPaginador();
-pokedex()
