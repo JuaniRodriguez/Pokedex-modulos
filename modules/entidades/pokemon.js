@@ -26,7 +26,7 @@ export function propiedadesPoke(infoPoke) {
         infoPoke.height,
         infoPoke.weight,
         infoPoke.types.map((el)=> {
-            return `"${el.type.name}"`
+            return `${el.type.name}`
         }),
         infoPoke.sprites.other.dream_world.front_default,
         infoPoke.sprites.front_default,

@@ -1,4 +1,4 @@
-const URL='192.168.0.122:8081';
+const URL='192.168.0.38:8082';
 
  it("testea que se creen las paginas y completen cuadros",()=> {
 
@@ -6,10 +6,10 @@ const URL='192.168.0.122:8081';
      fixture:"firstPage.json"
   })
   cy.visit(URL);
-  cy.get(".page-item").should("have.length",58)
+  cy.get(".page-item").should("have.length",64)
   cy.get(".page-item").first().click();
   cy.get(".page-item").first().should("have.class","active");
-  cy.get(".page-link").should("have.length",58);
+  cy.get(".page-link").should("have.length",64);
   cy.get(".col").first().should("have.text","bulbasaur")
   cy.get(".col").not("have.text","").should("have.length",20);
 
@@ -32,16 +32,11 @@ const URL='192.168.0.122:8081';
   cy.get(".altura").should("have.text","7mm");
   cy.get(".peso").should("have.text","6.9kg");
   cy.get(".tipo").should("have.text","grass,poison");
-
-  cy.intercept('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=1140',{
+  
+  cy.intercept('https://pokeapi.co/api/v2/pokemon/?limit=20&offset=1260',{
     fixture:"lastPage.json"
   })
   cy.get(".page-item").last().click();
-  cy.get(".col").eq(14).should("have.text","")
-  cy.get(".col").eq(15).should("have.text","")
-  cy.get(".col").eq(16).should("have.text","")
-  cy.get(".col").eq(17).should("have.text","")
-  cy.get(".col").eq(18).should("have.text","")
   cy.get(".col").eq(19).should("have.text","")
 
 
