@@ -2,24 +2,33 @@
  * @jest-environment jsdom
  */
 import pokedexFixture from './Fixture/pokedex.fixture.js';
-import { asignarPropiedadesPokes, completarCuadros } from "../pokeprops.js";
+import offsetceroresults from './Fixture/offsetceroresults.json'
+import {listarPokes,asignarPropiedadesPokes} from "../pokeprops.js";
 import bulbasaur from "./Fixture/bulbasaur.json"
 import stunfisk from "./Fixture/stunfisk.json";
 import kommo from "./Fixture/kommo.json";
 
-test("testea que se completen cuadros",()=> {
-    const poke= [
-        {name:"bulbasaur",url:"link"},
-        {name:"ivysaur",url:"link"},
-        {name:"venusaur",url:"link"}
-    ];
 
+test("testea que se listen los pokes",()=> {
+    const mockCallback=jest.fn();
     document.body.innerHTML=pokedexFixture;
-    completarCuadros(poke);
-    expect(document.querySelectorAll(".col")[0].textContent).toBe("bulbasaur");
-    expect(document.querySelectorAll(".col")[0].getAttribute("link")).toBe("link");
+    listarPokes(offsetceroresults,mockCallback) 
+        //expect(document.querySelectorAll(".col")[0].textContent).toBe("bulbasaur");
+        //expect(document.querySelectorAll(".col")[0].getAttribute("poke-id")).toBe("1/");
+        //expect(document.querySelectorAll(".col")[19].textContent).toBe("raticate");
+        //expect(document.querySelectorAll(".col")[19].getAttribute("poke-id")).toBe("20/");
 
-});
+//})
+
+    //document.querySelectorAll(".col").forEach((cuadro,i)=> {
+    //    expect(cuadro.getAttribute("poke-id")).toBe(`${i+1}/`)
+    //})
+    document.querySelectorAll(".col").forEach((cuadro,i)=> {
+        expect(cuadro.textContent).toBe(`${offsetceroresults[i].name}`)
+        expect(cuadro.getAttribute("poke-id")).toBe(`${i+1}/`)
+    })
+})
+
 
 describe("testea que se rellene la carta de pokes",()=> {
     document.body.innerHTML=pokedexFixture;
@@ -42,8 +51,9 @@ describe("testea que se rellene la carta de pokes",()=> {
     
     test("testea que a kommo se le asigne imagen default",()=> {
         asignarPropiedadesPokes(kommo)
-        expect(document.querySelector('.card img').getAttribute("src")).toBe("./poke-default.png")
+        expect(document.querySelector('.card img').getAttribute("src")).toBe("/poke-default.png")
     
     })
     
 })
+

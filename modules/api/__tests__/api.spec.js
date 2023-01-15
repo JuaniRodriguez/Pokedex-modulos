@@ -1,4 +1,4 @@
-import { mostrarPokes,llamarPropiedadPoke } from "../api";
+import { fetchPokes,fetchPoke } from "../api";
 
 beforeEach(()=> {
 
@@ -13,7 +13,7 @@ test("testea que se cargue lista de pokes",()=> {
     resolve({ json: () => jsonPromise });
   }));
 
-  mostrarPokes("https://pokeapi.co/api/v2/pokemon/?limit=20&offset=0");
+  fetchPokes(20);
     expect(global.fetch)
         .toHaveBeenCalledTimes(1)
 
@@ -28,7 +28,7 @@ test("testea que se carguen las propiedades del poke",()=> {
       }));
     
 
-      llamarPropiedadPoke("https://pokeapi.co/api/v2/pokemon/1/")
+      fetchPoke(1)
         expect(global.fetch)
             .toHaveBeenCalledTimes(1)
 

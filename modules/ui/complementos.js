@@ -14,8 +14,8 @@ export function desmarcarPaginaActiva() {
 
 
 export function setearActive(pagina) {
-    const seleccion=document.querySelector(`[id='${pagina}']`)
-    seleccion.classList.add('active');
+    const paginaActiva=document.querySelector(`[id='${pagina}']`)
+    paginaActiva.classList.add('active');
 
 }
 

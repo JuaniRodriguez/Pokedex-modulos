@@ -20,7 +20,7 @@ class Pokemon {
 }
 
 export function propiedadesPoke(infoPoke) {
-
+    
     const pokemon= new Pokemon (
         infoPoke.name,
         infoPoke.height,
