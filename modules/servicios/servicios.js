@@ -8,7 +8,7 @@ export async function llamarListadoPokes(offset) {
         const fetchPokemones= await fetchPokes(offset);
         guardarListaPokesEnLocalStorage(offset,fetchPokemones.results);
         return fetchPokemones.results;
-    }
+    }   
 }
 
 export async function llamarPropiedadesPoke(id) {
