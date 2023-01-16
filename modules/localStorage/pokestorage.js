@@ -5,7 +5,7 @@ export function guardarListaPokesEnLocalStorage(offset,pokesData) {
 export function obtenerListaPokesDeLocalStorage(offset) {
     const pokemones=localStorage.getItem(`${offset}`);
     if(pokemones===null) {
-        throw new Error("no se encontro el listado de pokemones")
+        throw new Error("se necesita un valor para buscar el listado de pokemones")
     }
     return JSON.parse(pokemones)
 }
