@@ -51,7 +51,7 @@ describe("testea que se rellene la carta de pokes",()=> {
     
     test("testea que a kommo se le asigne imagen default",()=> {
         asignarPropiedadesPokes(kommo)
-        expect(document.querySelector('.card img').getAttribute("src")).toBe("/poke-default.png")
+        expect(document.querySelector('.card img').getAttribute("src")).toBe("./poke-default.png")
     
     })
     

@@ -31,7 +31,7 @@ export function asignarPropiedadesPokes(dataPoke) {
     $imagen.removeAttribute('style');
     $imagen.setAttribute('src', `${poke.segundaImagen}`);
   } else {
-    $imagen.setAttribute('src', '/poke-default.png');
+    $imagen.setAttribute('src', './poke-default.png');
     $imagen.setAttribute('style', 'opacity:0.5');
   }
 
